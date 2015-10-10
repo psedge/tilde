@@ -26,10 +26,8 @@ set shiftwidth=4
 set tabstop=4
 
 " set that sexy colourscheme
-colorscheme badwolf
+colorscheme crayon
 
 " highlight current line
 set cursorline
 set cmdheight=1
-
-
