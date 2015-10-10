@@ -14,7 +14,7 @@ set incsearch
 set hlsearch
 
 " enable syntax highlighting
-syntax enable
+syntax on
 
 " uft-8
 set encoding=utf8
@@ -27,3 +27,9 @@ set tabstop=4
 
 " set that sexy colourscheme
 colorscheme badwolf
+
+" highlight current line
+set cursorline
+set cmdheight=1
+
+
