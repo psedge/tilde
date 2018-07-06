@@ -1,0 +1,66 @@
+#! /bin/bash
+
+NONE='\033[0m'
+BLUE='\033[0;36m'
+GREEN='\033[0;32m'
+RED='\033[0;91m'
+
+echo -e "${BLUE}If you're running this, something probably happened."
+echo -e "${BLUE}I'm sorry, or congratulations if you got new kit."
+echo -e "${NONE}"
+
+# Verify we're running in /home/something:
+#if [ `pwd | sed -e 's/\// /g' | awk '{print $1 $3}'` != 'home' ]; then
+#	continue
+#	echo "You should be running me in /home/user, dick'ed."
+#	exit 1;
+#fi
+
+# Upgrade packages
+sudo apt-get update -y > /dev/null && apt-get upgrade -y > /dev/null && apt-get dist-upgrade -y > /dev/null
+echo -e "[${GREEN}x${NONE}] Running updates."
+
+# System apps
+sudo apt-get install -y git docker docker-compose virtualbox vim unzip > /dev/null
+sudo apt-get install -y gimp darktable > /dev/null
+echo -e "[${GREEN}x${NONE}] Installing git, docker etc."
+
+# Languages and Extensions
+sudo apt-get -y install php7.2 php7.2-xml php7.2-pdo php7.2-mysql php7.2-xdebug php7.2-dom php7.2-dev > /dev/null
+echo -e "[${GREEN}x${NONE}] Installing PHP7.2"
+
+# Development Aides
+sudo apt-get -y install wireshark net-tools nmap > /dev/null
+sudo apt-get -y install mysql-server mysql-client redis > /dev/null
+sudo apt-get -y install network-manager-openvpn-gnome openvpn-systemd-resolved ca-certificates network-manager-openvpn-gnome > /dev/null
+echo -e "[${GREEN}x${NONE}] Installing netsec tools."
+
+wget -q https://nordvpn.com/api/files/zip
+mkdir vpn 2> /dev/null
+unzip -o zip -d vpn/ > /dev/null
+sudo rm zip
+echo -e "[${GREEN}x${NONE}] Grabbing VPN configs"
+
+# Uninstall fucking httpd. It's not 2006 anymore.
+sudo service apache2 stop > /dev/null
+sudo apt-get -y remove apache2 > /dev/null
+echo -e "[${GREEN}x${NONE}] Burning httpd"
+
+# Set backgrounds
+cp ./hills.jpg /var/
+gsettings set org.gnome.desktop.background picture-uri /var/hills.jpg
+echo -e "[${GREEN}x${NONE}] Setting the scene"
+
+# Making folders
+cd ~                                                                                                                                           
+mkdir apps 2> /dev/null
+mkdir apps/phpstorm 2> /dev/null && mkdir apps/pycharm 2> /dev/null
+mkdir dev 2> /dev/null
+echo -e "[${GREEN}x${NONE}] Creating folder structures"
+
+
+sudo apt-get -y autoremove > /dev/null
+echo -e "[${GREEN}x${NONE}] Hiding the body."
+
+echo ""
+echo -e ">${RED}:${NONE}D Grab your keys, we're ready."
