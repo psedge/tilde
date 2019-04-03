@@ -1,13 +1,20 @@
 # Tilde
-Collection of personal dotfiles. Contains Vim / Bash profiles, scripts etc.
+Collection of personal dotfiles. Contains Vim / Bash profiles, scripts etc
 
-> 1. Checkout repository
+## Quickstart
+
+> 1. Clone repository
 > 2. Run ./setup
 > 3. Import extra VPN configs manually
 
-## VIM Config
+# Gnome
+Sets backgrounds, sets up a default terminal profile
+
+## VIM config
 Enables syntax highlighting, BadWolf colour scheme, better searching.
 
-## VIM Plugins
+## VIM plugins
 Enables proper syntax highlighting for C, C++, PHP, Python
 
+## TMUX
+All sorts of good stuff, Powerline-inspired theme, VI bindings, etc.

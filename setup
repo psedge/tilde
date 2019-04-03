@@ -46,9 +46,13 @@ sudo service apache2 stop > /dev/null
 sudo apt-get -y remove apache2 > /dev/null
 echo -e "[${GREEN}x${NONE}] Burning httpd"
 
-# Set backgrounds
-cp ./hills.jpg /var/
-gsettings set org.gnome.desktop.background picture-uri /var/hills.jpg
+# Set backgrounds and set up the terminal
+cp ./desk.png /var/
+gsettings set org.gnome.desktop.background picture-uri file:///var/desk.png
+sudo apt-get -y install powerline > /dev/null
+profile="$(gsettings get org.gnome.Terminal.ProfilesList default)"
+profile="${profile:1:-1}"
+dconf load "/org/gnome/terminal/legacy/profiles:/:$profile/" < amsterdam.profile
 echo -e "[${GREEN}x${NONE}] Setting the scene"
 
 # Making folders
