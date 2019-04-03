@@ -1,20 +1,22 @@
 # Tilde
 Collection of personal dotfiles. Contains Vim / Bash profiles, scripts etc
 
+![vi.png](./vi.png)
+
 ## Quickstart
 
 > 1. Clone repository
 > 2. Run ./setup
 > 3. Import extra VPN configs manually
 
-# Gnome
+### Gnome
 Sets backgrounds, sets up a default terminal profile
 
-## VIM config
+### VIM config
 Enables syntax highlighting, BadWolf colour scheme, better searching.
 
-## VIM plugins
+### VIM plugins
 Enables proper syntax highlighting for C, C++, PHP, Python
 
-## TMUX
+### TMUX
 All sorts of good stuff, Powerline-inspired theme, VI bindings, etc.
