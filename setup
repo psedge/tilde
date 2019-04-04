@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 RED='\033[0;91m'
 
 echo -e "${BLUE}If you're running this, something probably happened."
-echo -e "${BLUE}I'm sorry, or congratulations if you got new kit."
+echo -e "${BLUE}I'm sorry... or, congratulations if you just got new hardware."
 echo -e "${NONE}"
 
 # Verify we're running in /home/something:
@@ -24,33 +24,33 @@ echo -e "[${GREEN}x${NONE}] Running updates."
 sudo apt-get install snapd
 sudo apt-get install -y git docker docker-compose virtualbox vim unzip > /dev/null
 sudo apt-get install -y gimp darktable > /dev/null
-sudo snap install spotify
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
-sudo dpkg -i google-chrome-stable_current_amd64.deb &&
-rm -f google-chrome-stable_current_amd64.deb
-sudo snap install skype --classic
-sudo snap install postman
+sudo snap install spotify > /dev/null
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /dev/null
+sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null
+rm -f google-chrome-stable_current_amd64.deb > /dev/nukll
+sudo snap install skype --classic > /dev/nukk
+sudo snap install postman > /dev/null
 echo -e "[${GREEN}x${NONE}] Installing git, docker, chrome, spotify etc."
 
 # Languages and Extensions
 sudo apt-get -y install php7.2 php7.2-xml php7.2-pdo php7.2-mysql php7.2-xdebug php7.2-dom php7.2-dev > /dev/null
 echo -e "[${GREEN}x${NONE}] Installing PHP7.2"
-sudo apt-get -y install python3.6 python3-pip > /dev/null                   
+sudo apt-get -y install python3.7 python3-pip > /dev/null
 echo -e "[${GREEN}x${NONE}] Installing Python3.6"
 
 # Development Aides
 sudo apt-get -y install wireshark net-tools nmap > /dev/null
 sudo apt-get -y install mysql-server mysql-client redis > /dev/null
 sudo apt-get -y install network-manager-openvpn-gnome openvpn-systemd-resolved ca-certificates network-manager-openvpn-gnome network-manager-l2tp network-manager-l2tp-gnome > /dev/null
-wget -q https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
-sudo apt-get install ./nordvpn-release_1.0.0_all.deb
-sudo apt-get update
+wget -q https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb > /dev/null
+sudo apt-get install ./nordvpn-release_1.0.0_all.deb > /dev/null
+sudo apt-get update > /dev/null
 echo -e "[${GREEN}x${NONE}] Installing netsec tools."
 
-wget -q https://nordvpn.com/api/files/zip
+wget -q https://nordvpn.com/api/files/zip 2> /dev/null
 mkdir vpn 2> /dev/null
 unzip -o zip -d vpn/ > /dev/null
-sudo rm zip
+sudo rm zip > /dev/null
 echo -e "[${GREEN}x${NONE}] Grabbing VPN configs"
 
 # Uninstall fucking httpd. It's not 2006 anymore.
@@ -58,23 +58,31 @@ sudo service apache2 stop > /dev/null
 sudo apt-get -y remove apache2 > /dev/null
 echo -e "[${GREEN}x${NONE}] Burning httpd"
 
-# Set backgrounds and set up the terminal
-cp ./desk.png /var/
-gsettings set org.gnome.desktop.background picture-uri file:///var/desk.png
+# Customise that term' boi
+sudo apt-get install powerline > /dev/null
+echo "if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bindings/bash/powerline.sh
+fi" >> ~/.bashrc
 sudo apt-get -y install powerline > /dev/null
 profile="$(gsettings get org.gnome.Terminal.ProfilesList default)"
 profile="${profile:1:-1}"
-dconf load "/org/gnome/terminal/legacy/profiles:/:$profile/" < amsterdam.profile
+dconf load "/org/gnome/terminal/legacy/profiles:/:$profile/" < amsterdam.profile > /dev/null
+echo -e "[${GREEN}x${NONE}] Pimping your terminal"
+
+# Set backgrounds
+cp ./desk.png /var/
+gsettings set org.gnome.desktop.background picture-uri file:///var/desk.png
 echo -e "[${GREEN}x${NONE}] Setting the scene"
 
-# Making folders
-cd ~                                                                                                                                           
-mkdir apps 2> /dev/null
-mkdir apps/phpstorm 2> /dev/null && mkdir apps/pycharm 2> /dev/null
+# Make folders
+mkdir dev 2> /dev/null
 mkdir dev 2> /dev/null
 echo -e "[${GREEN}x${NONE}] Creating folder structures"
 
-
+# Cleanup on isle 6
 sudo apt-get -y autoremove > /dev/null
 echo -e "[${GREEN}x${NONE}] Hiding the body."
 
