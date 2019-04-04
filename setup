@@ -66,6 +66,17 @@ echo "if [ -f `which powerline-daemon` ]; then
   POWERLINE_BASH_SELECT=1
   . /usr/share/powerline/bindings/bash/powerline.sh
 fi" >> ~/.bashrc
+mkdir -p ~/.config/powerline
+cat <<-'EOF' > ~/.config/powerline/config.json
+{
+    "ext": {
+        "shell": {
+            "theme": "default_leftonly"
+        }
+    }
+}
+EOF
+powerline-daemon --replace
 sudo apt-get -y install powerline > /dev/null
 profile="$(gsettings get org.gnome.Terminal.ProfilesList default)"
 profile="${profile:1:-1}"
