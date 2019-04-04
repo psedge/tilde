@@ -21,18 +21,30 @@ sudo apt-get update -y > /dev/null && apt-get upgrade -y > /dev/null && apt-get 
 echo -e "[${GREEN}x${NONE}] Running updates."
 
 # System apps
+sudo apt-get install snapd
 sudo apt-get install -y git docker docker-compose virtualbox vim unzip > /dev/null
 sudo apt-get install -y gimp darktable > /dev/null
-echo -e "[${GREEN}x${NONE}] Installing git, docker etc."
+sudo snap install spotify
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+sudo dpkg -i google-chrome-stable_current_amd64.deb &&
+rm -f google-chrome-stable_current_amd64.deb
+sudo snap install skype --classic
+sudo snap install postman
+echo -e "[${GREEN}x${NONE}] Installing git, docker, chrome, spotify etc."
 
 # Languages and Extensions
 sudo apt-get -y install php7.2 php7.2-xml php7.2-pdo php7.2-mysql php7.2-xdebug php7.2-dom php7.2-dev > /dev/null
 echo -e "[${GREEN}x${NONE}] Installing PHP7.2"
+sudo apt-get -y install python3.6 python3-pip > /dev/null                   
+echo -e "[${GREEN}x${NONE}] Installing Python3.6"
 
 # Development Aides
 sudo apt-get -y install wireshark net-tools nmap > /dev/null
 sudo apt-get -y install mysql-server mysql-client redis > /dev/null
-sudo apt-get -y install network-manager-openvpn-gnome openvpn-systemd-resolved ca-certificates network-manager-openvpn-gnome > /dev/null
+sudo apt-get -y install network-manager-openvpn-gnome openvpn-systemd-resolved ca-certificates network-manager-openvpn-gnome network-manager-l2tp network-manager-l2tp-gnome > /dev/null
+wget -q https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
+sudo apt-get install ./nordvpn-release_1.0.0_all.deb
+sudo apt-get update
 echo -e "[${GREEN}x${NONE}] Installing netsec tools."
 
 wget -q https://nordvpn.com/api/files/zip
