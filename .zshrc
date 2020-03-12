@@ -103,3 +103,6 @@ prompt_context() {
   fi
 }
 
+alias ls="ls -lahG"
+
+set -o physical
