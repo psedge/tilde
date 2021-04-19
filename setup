@@ -83,6 +83,10 @@ profile="${profile:1:-1}"
 dconf load "/org/gnome/terminal/legacy/profiles:/:$profile/" < amsterdam.profile > /dev/null
 echo -e "[${GREEN}x${NONE}] Pimping your terminal"
 
+cp .global-gitignore ~/.gitignore
+git config --global core.excludesFile '~/.gitignore'
+echo -e "[${GRREN}x${NONE}] Configured some dev shit"
+
 # Set backgrounds
 cp ./desk.png /var/
 gsettings set org.gnome.desktop.background picture-uri file:///var/desk.png
