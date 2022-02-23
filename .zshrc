@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/peter.sedgewick/.oh-my-zsh"
 
@@ -103,26 +100,55 @@ prompt_context() {
   fi
 }
 
-alias ls="ls -lahG"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 set -o physical
 
 export PATH=$PATH:/usr/local/Cellar/openvpn/2.4.8/sbin/openvpn:/opt/metasploit-framework/bin
 
-# The next line updates PATH for the Google Cloud SDK.
+# updates PATH for the Google Cloud SDK.
 if [ -f '/Users/peter.sedgewick/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/peter.sedgewick/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/peter.sedgewick/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/peter.sedgewick/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/peter.sedgewick/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/peter.sedgewick/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+alias ls="ls -lahG"
 alias cat="bat --plain --paging=never"
 export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/Users/peter.sedgewick/go/bin:$PATH"
+export GOPATH="/Users/peter.sedgewick/go"
+export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Custom
 alias sha256sum="shasum -a 256"
 alias instances="aws ec2 describe-instances | jq -r '.[][][\"Instances\"][] | {\"instance-id\": .[\"InstanceId\"], \"status\": .[\"State\"][\"Name\"], "private": .[\"PrivateIpAddress\"], \"public\": .[\"PublicIpAddress\"], \"tags\": .[\"Tags\"]}'"
 alias temps="sudo powermetrics --samplers smc |grep -i 'die temperature'"
-
-date=$(date +%d-%m-%y)
-alias todo="vi ~/todo/$date"
-
+alias todo="vi ~/todo/$date.md"
+alias chmox="chmod +x "
+alias epoch="perl -e 'print localtime($ARGV[0]) . \"\n\";' $1"
+alias clip="pbcopy"
+alias wgetdl="wget -r -np -nH --cut-dirs=3 -R index.html "
+alias ip="curl -s https://am.i.mullvad.net/json | jq"
+alias venv="python3 -m venv venv"
+alias ve="source venv/bin/activate"
+alias vd="deactivate"
+alias rg="rg --hidden"
+alias tmp="cd /tmp"
+alias ht="cd /Users/peter.sedgewick/hack/tmp"
