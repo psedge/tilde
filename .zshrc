@@ -65,7 +65,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions web-search)
+plugins=(zsh-autosuggestions web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -153,3 +153,17 @@ alias rg="rg --hidden"
 alias tmp="cd /tmp"
 alias hack="cd $HOME/hack"
 alias ht="cd $HOME/hack/tmp"
+export PATH="/opt/homebrew/opt/go@1.18/bin:$PATH"
+
+# Git
+alias g="git"
+alias gst="g st"
+alias gco="g co"
+alias gcob="g cob"
+alias gbr="g br"
+alias gcm="g cm"
+alias glg="g lg"
+alias gai="g ai"
+alias grb="g rb"
+alias glast="g last"
+

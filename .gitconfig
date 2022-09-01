@@ -1,10 +1,16 @@
+[user]
+    name = Peter Sedgewick
+    email = peter.sedgewick@gmail.com
+    
+
 [alias]
     st = status
     sw = switch
     co = checkout
     cob = checkout -b 
     br = br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
-    cm = commit -m
+    cm = !sh -c 'git commit -m \"$1\"' -
     last = show -p
     lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
     ai = add -p
+    rb = rebase -i 
