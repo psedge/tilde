@@ -1,0 +1,24 @@
+# Install Brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Work through common installs
+brew install --cask karabiner-elements
+brew install --cask google-chrome
+brew install iterm zsh fzf
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+mkdir -p ~/hack/ && cd ~/hack
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts && chmod +x install.sh && ./install.sh
+brew install jq rg bat docker
+
+# Install languages / devkits
+brew install python@3.10 go@1.18
+pip3 install requests 
+
+# Userland stuff
+brew install --cask firefox spotify nordvpn nordpass
+
+# Manual steps
+echo "Set Iterm Natural Keybindings (Profile, Keys, Mappings)"
+echo "Install Chrome Extensions"
+

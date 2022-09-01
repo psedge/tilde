@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/peter.sedgewick/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)🧠"
+    prompt_segment white default "%(!.%{%F{yellow}%}.)🧠"
   fi
 }
 
@@ -122,16 +122,16 @@ set -o physical
 export PATH=$PATH:/usr/local/Cellar/openvpn/2.4.8/sbin/openvpn:/opt/metasploit-framework/bin
 
 # updates PATH for the Google Cloud SDK.
-if [ -f '/Users/peter.sedgewick/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/peter.sedgewick/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 # The next line enables shell command completion for gcloud.
-# if [ -f '/Users/peter.sedgewick/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/peter.sedgewick/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias ls="ls -lahG"
 alias cat="bat --plain --paging=never"
 export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
-export PATH="/Users/peter.sedgewick/go/bin:$PATH"
-export GOPATH="/Users/peter.sedgewick/go"
+export PATH="$HOME/go/bin:$PATH"
+export GOPATH="$HOME/go"
 export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -140,7 +140,7 @@ export PATH="/usr/local/bin/google-cloud-sdk/bin:$PATH"
 alias sha256sum="shasum -a 256"
 alias instances="aws ec2 describe-instances | jq -r '.[][][\"Instances\"][] | {\"instance-id\": .[\"InstanceId\"], \"status\": .[\"State\"][\"Name\"], "private": .[\"PrivateIpAddress\"], \"public\": .[\"PublicIpAddress\"], \"tags\": .[\"Tags\"]}'"
 alias temps="sudo powermetrics --samplers smc |grep -i 'die temperature'"
-alias todo="vi ~/todo/$date.md"
+alias todo="vi $HOME/todo/$date.md"
 alias chmox="chmod +x "
 alias epoch="perl -e 'print localtime($ARGV[0]) . \"\n\";' $1"
 alias clip="pbcopy"
@@ -151,4 +151,5 @@ alias ve="source venv/bin/activate"
 alias vd="deactivate"
 alias rg="rg --hidden"
 alias tmp="cd /tmp"
-alias ht="cd /Users/peter.sedgewick/hack/tmp"
+alias hack="cd $HOME/hack"
+alias ht="cd $HOME/hack/tmp"

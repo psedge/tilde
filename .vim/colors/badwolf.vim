@@ -183,9 +183,9 @@ call s:HL('Folded', 'mediumgravel', 'bg', 'none')
 
 call s:HL('VertSplit', 'lightgravel', 'bg', 'none')
 
-call s:HL('CursorLine',   '', 'darkgravel', 'none')
-call s:HL('CursorColumn', '', 'darkgravel')
-call s:HL('ColorColumn',  '', 'darkgravel')
+call s:HL('CursorLine',   '', 'lightgravel', 'none')
+call s:HL('CursorColumn', '', 'lightgravel')
+call s:HL('ColorColumn',  '', 'lightgravel')
 
 call s:HL('TabLine', 'plain', s:tabline, 'none')
 call s:HL('TabLineFill', 'plain', s:tabline, 'none')
