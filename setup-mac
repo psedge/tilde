@@ -9,10 +9,10 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 mkdir -p ~/hack/ && cd ~/hack
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts && chmod +x install.sh && ./install.sh
-brew install jq rg bat docker
+brew install jq rg bat docker flake8 yq pyenv tfenv
 
 # Install languages / devkits
-brew install python@3.10 go@1.18
+brew install python@3.11 go@1.19
 pip3 install requests 
 
 # Userland stuff
